@@ -10,6 +10,7 @@ import { ProjectComponent } from './body/project/project.component';
 import { SkinComponent } from './body/skin/skin.component';
 import { SkinDetailComponent } from './body/skin-detail/skin-detail.component';
 import { MessagesComponent } from './footer/messages/messages.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MessagesComponent } from './footer/messages/messages.component';
     MessagesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
