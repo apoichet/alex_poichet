@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Skin } from './skin/skin';
+import { Skin } from './skins/skin';
 import { SKINS } from './mock-skins';
 import { Observable, of } from 'rxjs';
 import { MessageService } from '../footer/messages.service';

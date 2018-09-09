@@ -3,11 +3,11 @@ import { Skin } from './skin';
 import { SkinService } from '../skin.service';
 
 @Component({
-  selector: 'app-skin',
-  templateUrl: './skin.component.html',
-  styleUrls: ['./skin.component.css']
+  selector: 'app-skins',
+  templateUrl: './skins.component.html',
+  styleUrls: ['./skins.component.css']
 })
-export class SkinComponent implements OnInit {
+export class SkinsComponent implements OnInit {
   skins: Skin[];
   selectedSkin: Skin;
 

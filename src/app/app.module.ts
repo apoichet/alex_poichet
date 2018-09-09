@@ -6,8 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { BodyComponent } from './body/body.component';
-import { ProjectComponent } from './body/project/project.component';
-import { SkinComponent } from './body/skin/skin.component';
+import { ProjectsComponent } from './body/projects/projects.component';
+import { SkinsComponent } from './body/skins/skins.component';
 import { SkinDetailComponent } from './body/skin-detail/skin-detail.component';
 import { MessagesComponent } from './footer/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -19,8 +19,8 @@ import { AppRoutingModule } from './/app-routing.module';
     FooterComponent,
     NavComponent,
     BodyComponent,
-    ProjectComponent,
-    SkinComponent,
+    ProjectsComponent,
+    SkinsComponent,
     SkinDetailComponent,
     MessagesComponent
   ],
