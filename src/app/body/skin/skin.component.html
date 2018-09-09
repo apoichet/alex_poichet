@@ -1,0 +1,8 @@
+<h2>My Skins</h2>
+<ul>
+  <li *ngFor="let skin of skins" [class.selected]="skin === selectedSkin" (click)="onSelect(skin)" class=skins>
+    <span class=skin>{{skin.name}}</span>
+  </li>
+</ul>
+<app-skin-detail [skin]="selectedSkin"></app-skin-detail>
+
