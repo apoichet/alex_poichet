@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Skin } from '../skin';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { SkinService } from '../skin.service';
 
 @Component({
   selector: 'app-skin-detail',
@@ -7,12 +10,24 @@ import { Skin } from '../skin';
   styleUrls: ['./skin-detail.component.css']
 })
 export class SkinDetailComponent implements OnInit {
+  skin: Skin;
 
-  @Input() skin: Skin;
+  constructor(
+    private skinService: SkinService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  getSkin(): void {
+    const name = this.route.snapshot.paramMap.get('name');
+    this.skinService.getSkin(name).subscribe(skin => this.skin = skin);
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
+  ngOnInit() {
+    this.getSkin();
+  }
 }

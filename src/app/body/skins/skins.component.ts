@@ -9,7 +9,6 @@ import { SkinService } from './skin.service';
 })
 export class SkinsComponent implements OnInit {
   skins: Skin[];
-  selectedSkin: Skin;
 
   constructor(private skinService: SkinService) { }
 
@@ -20,10 +19,6 @@ export class SkinsComponent implements OnInit {
   createSkins() {
     this.skinService.getSkins()
     .subscribe(skins => this.skins = skins);
-  }
-
-  onSelect(skin: Skin) {
-    this.selectedSkin = skin;
   }
 
 }

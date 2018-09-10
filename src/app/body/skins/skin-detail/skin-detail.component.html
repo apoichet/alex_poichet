@@ -1,6 +1,17 @@
 <div *ngIf="skin">
-    <p>Selected skin : </p>
-    <p>
-      <span>{{skin.name}} {{skin.interest}} {{skin.level}} {{skin.trend}}</span>
-    </p>
-  </div>
+  <p>Selected skin : </p>
+  <p>
+    <span>Nom : {{skin.name}}</span>
+  </p>
+  <p>
+    <span>Interet : {{skin.interest}}</span>
+  </p>
+  <p>
+    <span>Niveau : {{skin.level}}</span>
+  </p>
+  <p>
+    <span>Score trend : {{skin.trend}}</span>
+  </p>
+</div>
+
+<button (click)="goBack()">go back</button>
