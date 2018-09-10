@@ -11,6 +11,7 @@ import { SkinsComponent } from './body/skins/skins.component';
 import { SkinDetailComponent } from './body/skins/skin-detail/skin-detail.component';
 import { MessagesComponent } from './footer/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { PresentationComponent } from './body/presentation/presentation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './/app-routing.module';
     ProjectsComponent,
     SkinsComponent,
     SkinDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
