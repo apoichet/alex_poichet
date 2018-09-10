@@ -8,7 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { BodyComponent } from './body/body.component';
 import { ProjectsComponent } from './body/projects/projects.component';
 import { SkinsComponent } from './body/skins/skins.component';
-import { SkinDetailComponent } from './body/skin-detail/skin-detail.component';
+import { SkinDetailComponent } from './body/skins/skin-detail/skin-detail.component';
 import { MessagesComponent } from './footer/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 

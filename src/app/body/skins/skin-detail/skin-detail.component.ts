@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Skin } from '../skins/skin';
+import { Skin } from '../skin';
 
 @Component({
   selector: 'app-skin-detail',
