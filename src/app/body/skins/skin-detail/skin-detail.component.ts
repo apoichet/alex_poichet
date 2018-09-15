@@ -7,7 +7,7 @@ import { SkinService } from '../skin.service';
 @Component({
   selector: 'app-skin-detail',
   templateUrl: './skin-detail.component.html',
-  styleUrls: ['./skin-detail.component.css']
+  styleUrls: ['./skin-detail.component.scss']
 })
 export class SkinDetailComponent implements OnInit {
   skin: Skin;
