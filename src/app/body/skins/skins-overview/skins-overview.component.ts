@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Skin } from '../../../entities/skin';
 import { SkinService } from '../../../services/skin.service';
 
@@ -9,6 +9,8 @@ import { SkinService } from '../../../services/skin.service';
 })
 export class SkinsOverviewComponent implements OnInit {
   skins: Skin[];
+  skinSearch: String;
+  public test: String = '';
 
   constructor(private skinService: SkinService) {}
 
@@ -18,5 +20,22 @@ export class SkinsOverviewComponent implements OnInit {
 
   createSkins() {
     this.skinService.getSkins().subscribe(skins => (this.skins = skins));
+  }
+
+  filterIt(arr, searchKey) {
+    return arr.filter((obj) => {
+      return Object.keys(obj).some((key) => {
+        return obj[key].toString().includes(searchKey);
+      });
+    });
+  }
+
+  public search() {
+    if (!this.skinSearch) {
+      return this.skins;
+    }
+    if (this.skinSearch) {
+      return this.filterIt(this.skins, this.skinSearch);
+    }
   }
 }

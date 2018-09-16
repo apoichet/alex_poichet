@@ -1,6 +1,24 @@
 <h2>Skins Overview</h2>
 
-<div class="table-responsive">
+<div class="card">
+  <div class="card-body">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12">
+
+        <div class="md-form">
+          <input type="search" [(ngModel)]="skinSearch" id="search" class="form-control" mdbInputDirective [mdbValidate]="false">
+          <label for="search">Search</label>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
 
   <!--Table-->
   <table class="table">
@@ -19,8 +37,8 @@
 
     <!--Table body-->
     <tbody>
-      <tr *ngFor="let skin of skins">
-        <th scope="row">1</th>
+      <tr *ngFor="let skin of search(); let i = index">
+        <th scope="row">{{i+1}}</th>
         <td>
           <a routerLink="/skin-detail/{{skin.name}}">
             <span class="skin">{{skin.name}}</span>

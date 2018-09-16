@@ -15,6 +15,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { PresentationComponent } from './body/presentation/presentation.component';
 import { SkinsOverviewComponent } from './body/skins/skins-overview/skins-overview.component';
 import { SkinsComparingComponent } from './body/skins/skins-comparing/skins-comparing.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SkinsComparingComponent } from './body/skins/skins-comparing/skins-comp
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
