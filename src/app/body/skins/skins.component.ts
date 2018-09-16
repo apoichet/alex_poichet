@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Skin } from './skin';
-import { SkinService } from './skin.service';
+import { Skin } from '../../entities/skin';
+import { SkinService } from '../../services/skin.service';
 
 @Component({
   selector: 'app-skins',

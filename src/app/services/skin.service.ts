@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Skin } from './skin';
+import { Skin } from '../entities/skin';
 import { SKINS } from './mock-skins';
 import { Observable, of } from 'rxjs';
-import { MessageService } from '../../footer/messages.service';
+import { MessageService } from './messages.service';
 
 @Injectable({
   providedIn: 'root'

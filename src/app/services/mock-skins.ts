@@ -1,4 +1,4 @@
-import { Skin } from './skin';
+import { Skin } from '../entities/skin';
 
 export const SKINS: Skin[] = [new Skin('python', 'high', 4800, 'low')
 , new Skin('java', 'high', 3200, 'high')

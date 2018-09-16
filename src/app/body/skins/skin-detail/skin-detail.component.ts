@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Skin } from '../skin';
+import { Skin } from '../../../entities/skin';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SkinService } from '../skin.service';
+import { SkinService } from '../../../services/skin.service';
 
 @Component({
   selector: 'app-skin-detail',
