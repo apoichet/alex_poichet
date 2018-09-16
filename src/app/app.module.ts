@@ -13,6 +13,8 @@ import { SkinDetailComponent } from './body/skins/skin-detail/skin-detail.compon
 import { MessagesComponent } from './footer/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PresentationComponent } from './body/presentation/presentation.component';
+import { SkinsOverviewComponent } from './body/skins/skins-overview/skins-overview.component';
+import { SkinsComparingComponent } from './body/skins/skins-comparing/skins-comparing.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PresentationComponent } from './body/presentation/presentation.componen
     SkinsComponent,
     SkinDetailComponent,
     MessagesComponent,
-    PresentationComponent
+    PresentationComponent,
+    SkinsOverviewComponent,
+    SkinsComparingComponent
   ],
   imports: [
     BrowserModule,

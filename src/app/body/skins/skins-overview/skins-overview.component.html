@@ -1,0 +1,44 @@
+<div class="container">
+
+<h2>Skins Overview</h2>
+
+<div class="table-responsive">
+
+  <!--Table-->
+  <table class="table">
+
+    <!--Table head-->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="th-lg">Name</th>
+        <th class="th-lg">Interest</th>
+        <th class="th-lg">Level</th>
+        <th class="th-lg">Trend</th>
+      </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+      <tr *ngFor="let skin of skins">
+        <th scope="row">1</th>
+        <td>
+          <a routerLink="/skin-detail/{{skin.name}}">
+            <span class="skin">{{skin.name}}</span>
+          </a>
+        </td>
+        <td>{{skin.interest}}</td>
+        <td>{{skin.level}}</td>
+        <td>{{skin.trend}}</td>
+      </tr>
+
+    </tbody>
+    <!--Table body-->
+
+  </table>
+  <!--Table-->
+
+</div>
+
+</div>

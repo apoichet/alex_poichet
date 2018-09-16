@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  title = 'My Body';
-
   constructor() { }
 
   ngOnInit() {
