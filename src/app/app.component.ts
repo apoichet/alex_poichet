@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {User} from './entities/user';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private _user: User = new User('Poichet', 'Alexandre');
+
+  get user(): User {
+    return this._user;
+  }
 }
