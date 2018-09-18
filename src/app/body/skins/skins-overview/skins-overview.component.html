@@ -1,4 +1,4 @@
-<h2>Skins Overview</h2>
+<h2>Skins Comparing</h2>
 
 <div class="card">
   <div class="card-body">
@@ -30,7 +30,7 @@
         <th class="th-lg">Name</th>
         <th class="th-lg">Interest</th>
         <th class="th-lg">Level</th>
-        <th class="th-lg">Trend</th>
+        <th class="th-lg">Trend Score</th>
       </tr>
     </thead>
     <!--Table head-->
@@ -41,7 +41,7 @@
         <th scope="row">{{i+1}}</th>
         <td>
           <a routerLink="/skin-detail/{{skin.name}}">
-            <span class="skin">{{skin.name}}</span>
+            <span><strong>{{skin.name}}</strong></span>
           </a>
         </td>
         <td>{{skin.interest}}</td>
