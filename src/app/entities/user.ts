@@ -1,3 +1,5 @@
+import {Link} from './link';
+
 export class User{
 
   private _lastName: String;
@@ -5,12 +7,23 @@ export class User{
   private _phoneNumber: String;
   private _adresse: String;
   private _mail: String;
+  private _profession: String;
+  private _links: Link[];
 
-  constructor(lastName: string, firstName: string, mail: String) {
+  constructor(lastName: string, firstName: string, mail: String, profession: String) {
     this._lastName = lastName;
     this._firstName = firstName;
+    this._mail = mail;
+    this._profession = profession;
+    this._links = [new Link('http://www.univ-fcomte.fr', 'Université de Franche Comté - UFC'),
+      new Link('http://www.afcepf.fr/', 'AFCEPF'),
+      new Link('https://www.pluralsight.com', 'Pluralsight'),
+      new Link('https://openclassrooms.com', 'Open Class Room')];
   }
 
+  get links(): Link[] {
+    return this._links;
+  }
 
   get lastName(): String {
     return this._lastName;
@@ -34,5 +47,19 @@ export class User{
 
   set adresse(value: String) {
     this._adresse = value;
+  }
+
+
+  get mail(): String {
+    return this._mail;
+  }
+
+  set mail(value: String) {
+    this._mail = value;
+  }
+
+
+  get profession(): String {
+    return this._profession;
   }
 }

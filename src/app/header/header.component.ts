@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../entities/user';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  name = 'Alexandre Poichet';
-  profession = 'Développeur Web';
+  @Input() user: User;
 
   constructor() { }
 

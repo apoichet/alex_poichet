@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AppComponent} from '../app.component';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../entities/user';
 
 @Component({
   selector: 'app-footer',
@@ -7,6 +7,8 @@ import {AppComponent} from '../app.component';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+
+  @Input() user: User;
 
   constructor() { }
 

@@ -7,8 +7,7 @@ import {User} from './entities/user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private _user: User = new User('Poichet', 'Alexandre');
-
+  private _user: User = new User('Poichet', 'Alexandre', 'a.poichet@gmail.com', 'Développeur Web');
   get user(): User {
     return this._user;
   }

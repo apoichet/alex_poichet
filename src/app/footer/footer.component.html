@@ -11,9 +11,8 @@
       <div class="col-md-6 mx-auto">
 
         <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Alexandre Poichet</h5>
-        <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit.</p>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">{{user.firstName}} {{user.lastName}}</h5>
+        <h6>{{user.mail}}</h6>
 
       </div>
       <!-- Grid column -->
@@ -26,21 +25,10 @@
         <!-- Links -->
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
 
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" *ngFor="let link of user.links">
           <li>
-            <a href="http://www.univ-fcomte.fr">Université de Franche Comté - UFC</a>
+            <a href="{{link.ref}}">{{link.name}}</a>
           </li>
-          <li>
-            <a href="http://www.afcepf.fr/">AFCEPF</a>
-          </li>
-          <li>
-            <a href="https://www.pluralsight.com">Pluralsight</a>
-          </li>
-          <li>
-            <a href="https://openclassrooms.com">Open Class Room</a>
-          </li>
-
-
         </ul>
 
       </div>
