@@ -1,11 +1,12 @@
 <h2>Skins Overview</h2>
-<div class="chart">
+
+<div class="chart container-fluid">
     <canvas mdbChart
-        [chartType]="chartType"
-        [data]="chartData"
-        [labels]="chartLabels"
-        [colors]="chartColors"
-        [options]="chartOptions"
+        [chartType]="chartSkinTrend.type"
+        [datasets]="chartSkinTrend.datas"
+        [labels]="chartSkinTrend.labels"
+        [colors]="chartSkinTrend.colors"
+        [options]="chartSkinTrend.option"
         [legend]="true"
         (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)">
