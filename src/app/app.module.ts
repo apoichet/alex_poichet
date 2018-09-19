@@ -12,10 +12,14 @@ import { SkinsComponent } from './body/skins/skins.component';
 import { SkinDetailComponent } from './body/skins/skin-detail/skin-detail.component';
 import { MessagesComponent } from './footer/messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { PresentationComponent } from './body/presentation/presentation.component';
+import { HomeComponent } from './body/home/home.component';
 import { SkinsOverviewComponent } from './body/skins/skins-overview/skins-overview.component';
 import { SkinsComparingComponent } from './body/skins/skins-comparing/skins-comparing.component';
 import { FormsModule } from '@angular/forms';
+import { ProjectsPersonalComponent } from './body/projects/projects-personal/projects-personal.component';
+import { ProjectsProfessionalComponent } from './body/projects/projects-professional/projects-professional.component';
+import { FormationComponent } from './body/formation/formation.component';
+import { ContactComponent } from './body/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,13 @@ import { FormsModule } from '@angular/forms';
     SkinsComponent,
     SkinDetailComponent,
     MessagesComponent,
-    PresentationComponent,
+    HomeComponent,
     SkinsOverviewComponent,
-    SkinsComparingComponent
+    SkinsComparingComponent,
+    ProjectsPersonalComponent,
+    ProjectsProfessionalComponent,
+    FormationComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
