@@ -13,3 +13,15 @@
     </canvas>
 </div>
 
+<div class="chart container-fluid">
+  <canvas mdbChart
+          [chartType]="chartSkinLevelInterest.type"
+          [datasets]="chartSkinLevelInterest.datas"
+          [labels]="chartSkinLevelInterest.labels"
+          [options]="chartSkinLevelInterest.option"
+          [legend]="true"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>
+</div>
+

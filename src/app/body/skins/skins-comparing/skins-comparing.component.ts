@@ -12,26 +12,8 @@ import {Chart} from './chart';
 export class SkinsComparingComponent implements OnInit {
   skins: Skin[];
   public chartSkinTrend: Chart;
-  public chartColors = [
-    {
-      hoverBorderColor: [
-        'rgba(0, 0, 0, 0.1)',
-        'rgba(0, 0, 0, 0.1)',
-        'rgba(0, 0, 0, 0.1)',
-        'rgba(0, 0, 0, 0.1)',
-        'rgba(0, 0, 0, 0.1)'
-      ],
-      hoverBorderWidth: 0,
-      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-      hoverBackgroundColor: [
-        '#FF5A5E',
-        '#5AD3D1',
-        '#FFC870',
-        '#A8B3C5',
-        '#616774'
-      ]
-    }
-  ];
+  public chartSkinLevelInterest: Chart;
+
   public chartClicked(e: any): void {}
   public chartHovered(e: any): void {}
 
@@ -40,7 +22,38 @@ export class SkinsComparingComponent implements OnInit {
 
   ngOnInit() {
     this.createSkins();
-    this.chartSkinTrend = new Chart('Skin Trend', 'line');
+    this.buildChartTrend();
+    this.buildChartLevelInterest()
+  }
+
+  buildChartLevelInterest(){
+    this.chartSkinLevelInterest = new Chart('Skins', 'bar');
+    this.chartSkinLevelInterest.labels = this.skins.map(skin => skin.name);
+    const interestDatas = this.skins.map(skin => skin.interest);
+    const interestDatasColor = this.skins.map(skin => '#7FFF00');
+    const levelDatas = this.skins.map(skin => skin.level);
+    const levelDatasColor = this.skins.map(skin => '#ff1315');
+    this.chartSkinLevelInterest.datas = [
+      {
+        label: 'Level',
+        backgroundColor: levelDatasColor,
+        data: levelDatas
+      },
+      {
+        label: 'Interest',
+        backgroundColor: interestDatasColor,
+        data: interestDatas
+      }
+    ];
+
+    this.chartSkinLevelInterest.option = {
+      'responsive': true
+    }
+  }
+
+
+  buildChartTrend(){
+    this.chartSkinTrend = new Chart('Skins Trend', 'line');
     this.chartSkinTrend.labels = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre'
       , 'Octobre', 'Novembre', 'Decembre'];
     this.chartSkinTrend.datas = this.skins.map(skin => ({
