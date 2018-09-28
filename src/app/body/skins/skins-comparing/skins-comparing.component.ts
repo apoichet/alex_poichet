@@ -52,8 +52,12 @@ export class SkinsComparingComponent implements OnInit {
     ];
     this.chartSkinLevelInterest.option = {
       responsive: true,
+      offsetGridLines: false,
       scales: {
         yAxes: [{
+          gridLines: {
+            drawOnChartArea: false
+          },
           id: 'Level',
           type: 'linear',
           position: 'left',
@@ -67,6 +71,9 @@ export class SkinsComparingComponent implements OnInit {
             max: 4
           }
         }, {
+          gridLines: {
+            drawOnChartArea: false
+          },
           id: 'Interest',
           type: 'linear',
           position: 'right',
@@ -79,6 +86,11 @@ export class SkinsComparingComponent implements OnInit {
             stepSize: 1,
             max: 4
           }
+        }],
+        xAxes: [{
+          gridLines: {
+            drawOnChartArea: false
+          },
         }]
       }
     }
