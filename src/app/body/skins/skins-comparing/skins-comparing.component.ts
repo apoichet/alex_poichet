@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SkinService} from '../../../services/skin.service';
-import {Skin} from '../../../entities/skin';
+import {Skin} from '../../../model/skin/skin';
 import {Chart} from './chart';
+import {SKIN_INTERESTS, SKIN_LEVEL} from '../../../services/mock-skins';
 
 
 @Component({
@@ -29,25 +30,57 @@ export class SkinsComparingComponent implements OnInit {
   buildChartLevelInterest(){
     this.chartSkinLevelInterest = new Chart('Skins', 'bar');
     this.chartSkinLevelInterest.labels = this.skins.map(skin => skin.name);
-    const interestDatas = this.skins.map(skin => skin.interest);
-    const interestDatasColor = this.skins.map(skin => '#7FFF00');
-    const levelDatas = this.skins.map(skin => skin.level);
-    const levelDatasColor = this.skins.map(skin => '#ff1315');
+    const interestDatas = this.skins.map(skin => skin.interest.value);
+    const levelDatas = this.skins.map(skin => skin.level.value);
+    this.chartSkinLevelInterest.colors = [{
+      backgroundColor: '#80ff6b'
+    },
+      {
+        backgroundColor: '#ff695f'
+      }];
     this.chartSkinLevelInterest.datas = [
       {
         label: 'Level',
-        backgroundColor: levelDatasColor,
+        yAxisID: 'Level',
         data: levelDatas
       },
       {
         label: 'Interest',
-        backgroundColor: interestDatasColor,
+        yAxisID: 'Interest',
         data: interestDatas
       }
     ];
-
     this.chartSkinLevelInterest.option = {
-      'responsive': true
+      responsive: true,
+      scales: {
+        yAxes: [{
+          id: 'Level',
+          type: 'linear',
+          position: 'left',
+          ticks: {
+            callback: function(value, index, values) {
+              const level = SKIN_LEVEL.find(level => level.value == value);
+              return level ? level.label : '';
+            },
+            beginAtZero: true,
+            stepSize: 1,
+            max: 4
+          }
+        }, {
+          id: 'Interest',
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            callback: function(value, index, values) {
+              const interest = SKIN_INTERESTS.find(interest => interest.value == value);
+              return interest ? interest.label : '';
+            },
+            beginAtZero: true,
+            stepSize: 1,
+            max: 4
+          }
+        }]
+      }
     }
   }
 

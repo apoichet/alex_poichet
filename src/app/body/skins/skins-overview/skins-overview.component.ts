@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Skin } from '../../../entities/skin';
+import { Skin } from '../../../model/skin/skin';
 import { SkinService } from '../../../services/skin.service';
 
 @Component({
