@@ -1,9 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app">
-<app-header [user]="user"></app-header>
-<app-nav></app-nav>
-<app-body></app-body>
-<app-footer [user]="user"></app-footer>
+  <app-header [user]="user"></app-header>
+  <app-nav></app-nav>
+  <body>
+    <router-outlet></router-outlet>
+  </body>
+  <app-footer [user]="user"></app-footer>
 </div>
 
 

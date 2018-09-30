@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {SkinService} from '../../../services/skin.service';
-import {Skin} from '../../../model/skin/skin';
+import {SkinService} from '../../../../services/skin.service';
+import {Skin} from '../../../../model/skin/skin';
 import {Chart} from './chart';
-import {SKIN_INTERESTS, SKIN_LEVEL} from '../../../services/mock-skins';
+import {SKIN_INTERESTS, SKIN_LEVEL} from '../../../../services/mock-skins';
 
 
 @Component({

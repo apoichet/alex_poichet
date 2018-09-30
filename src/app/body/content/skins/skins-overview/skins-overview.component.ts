@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Skin } from '../../../model/skin/skin';
-import { SkinService } from '../../../services/skin.service';
+import { Skin } from '../../../../model/skin/skin';
+import { SkinService } from '../../../../services/skin.service';
 
 @Component({
   selector: 'app-skins-overview',
