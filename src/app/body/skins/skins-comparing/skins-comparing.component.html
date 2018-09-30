@@ -8,8 +8,8 @@
         [colors]="chartSkinTrend.colors"
         [options]="chartSkinTrend.option"
         [legend]="true"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)">
+        (chartHover)="chartHovered()"
+        (chartClick)="chartClicked()">
     </canvas>
 </div>
 
@@ -21,8 +21,8 @@
           [options]="chartSkinLevelInterest.option"
           [colors]="chartSkinLevelInterest.colors"
           [legend]="true"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)">
+          (chartHover)="chartHovered()"
+          (chartClick)="chartClicked()">
   </canvas>
 </div>
 

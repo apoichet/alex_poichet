@@ -15,8 +15,8 @@ export class SkinsComparingComponent implements OnInit {
   public chartSkinTrend: Chart;
   public chartSkinLevelInterest: Chart;
 
-  public chartClicked(e: any): void {}
-  public chartHovered(e: any): void {}
+  public chartClicked(): void {}
+  public chartHovered(): void {}
 
 
   constructor(private skinService: SkinService) {}
@@ -24,10 +24,10 @@ export class SkinsComparingComponent implements OnInit {
   ngOnInit() {
     this.createSkins();
     this.buildChartTrend();
-    this.buildChartLevelInterest()
+    this.buildChartLevelInterest();
   }
 
-  buildChartLevelInterest(){
+  buildChartLevelInterest() {
     this.chartSkinLevelInterest = new Chart('Skins', 'bar');
     this.chartSkinLevelInterest.labels = this.skins.map(skin => skin.name);
     const interestDatas = this.skins.map(skin => skin.interest.value);
@@ -62,9 +62,9 @@ export class SkinsComparingComponent implements OnInit {
           type: 'linear',
           position: 'left',
           ticks: {
-            callback: function(value, index, values) {
-              const level = SKIN_LEVEL.find(level => level.value == value);
-              return level ? level.label : '';
+            callback: function(value) {
+              const levelFind = SKIN_LEVEL.find(level => level.value === value);
+              return levelFind ? levelFind.label : '';
             },
             beginAtZero: true,
             stepSize: 1,
@@ -78,9 +78,9 @@ export class SkinsComparingComponent implements OnInit {
           type: 'linear',
           position: 'right',
           ticks: {
-            callback: function(value, index, values) {
-              const interest = SKIN_INTERESTS.find(interest => interest.value == value);
-              return interest ? interest.label : '';
+            callback: function(value) {
+              const interestFind = SKIN_INTERESTS.find(interest => interest.value === value);
+              return interestFind ? interestFind.label : '';
             },
             beginAtZero: true,
             stepSize: 1,
@@ -93,11 +93,11 @@ export class SkinsComparingComponent implements OnInit {
           },
         }]
       }
-    }
+    };
   }
 
 
-  buildChartTrend(){
+  buildChartTrend() {
     this.chartSkinTrend = new Chart('Skins Trend', 'line');
     this.chartSkinTrend.labels = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre'
       , 'Octobre', 'Novembre', 'Decembre'];
@@ -108,7 +108,7 @@ export class SkinsComparingComponent implements OnInit {
     this.chartSkinTrend.option = {
       'responsive': true
     };
-    this.chartSkinTrend.colors = this.skins.map(skin => {
+    this.chartSkinTrend.colors = this.skins.map(() => {
       const randomColor = this.getRandomColor();
       return {
         fill: false,
