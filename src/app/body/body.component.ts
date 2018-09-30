@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
+  hasExtension: Boolean;
   constructor() { }
 
+  toggle() {
+    this.hasExtension = !this.hasExtension;
+  }
+
   ngOnInit() {
+    this.hasExtension = false;
   }
 
 }

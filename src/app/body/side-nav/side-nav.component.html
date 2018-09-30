@@ -1,0 +1,12 @@
+<div class="extension" *ngIf="!isOpen">
+    <a (click)="toogleNav()">&raquo;</a>
+</div>
+
+<div [@openClose]="isOpen ? 'open' : 'close'" class="sidenav">
+  <a class="closebtn" (click)="toogleNav()">&times;</a>
+  <div class="container">
+    <router-outlet name="extension"></router-outlet>
+  </div>
+</div>
+
+

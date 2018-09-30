@@ -1,0 +1,42 @@
+.extension {
+  position: absolute;
+  top:45%;
+  width: 50px;
+  background-color: #5355ff;
+}
+
+.extension a{
+  font-size: 100px;
+}
+
+.sidenav:first-child div{
+  margin-top: 75px;
+}
+
+.sidenav {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: rgba(143, 138, 145, 0.2);
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+.sidenav :hover {
+}
+
+.extension .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}

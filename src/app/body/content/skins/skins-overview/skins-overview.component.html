@@ -1,3 +1,4 @@
+<div class="container content">
 <h2>Skins Comparing</h2>
 
 <div class="card">
@@ -20,11 +21,11 @@
     </div>
     <!-- Grid row -->
 
-  <!--Table-->
-  <table class="table">
+    <!--Table-->
+    <table class="table">
 
-    <!--Table head-->
-    <thead>
+      <!--Table head-->
+      <thead>
       <tr>
         <th>#</th>
         <th class="th-lg">Name</th>
@@ -32,11 +33,11 @@
         <th class="th-lg">Level</th>
         <th class="th-lg">Trend Score</th>
       </tr>
-    </thead>
-    <!--Table head-->
+      </thead>
+      <!--Table head-->
 
-    <!--Table body-->
-    <tbody>
+      <!--Table body-->
+      <tbody>
       <tr *ngFor="let skin of search(); let i = index">
         <th scope="row">{{i+1}}</th>
         <td>
@@ -49,10 +50,12 @@
         <td>{{skin.trend}}</td>
       </tr>
 
-    </tbody>
-    <!--Table body-->
+      </tbody>
+      <!--Table body-->
 
-  </table>
-  <!--Table-->
+    </table>
+    <!--Table-->
 
+  </div>
+</div>
 </div>

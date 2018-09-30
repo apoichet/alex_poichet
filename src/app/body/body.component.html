@@ -1,5 +1,9 @@
 <body>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+<button (click)="toggle()">Filter</button>
+<div id="extension" class="side-nav" *ngIf="hasExtension">
+  <router-outlet name="extension"></router-outlet>
+</div>
+<div id="content" class="container">
+  <router-outlet name="content"></router-outlet>
+</div>
 </body>
