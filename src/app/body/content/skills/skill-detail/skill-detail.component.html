@@ -1,0 +1,19 @@
+<div class="container">
+<div *ngIf="skill">
+  <p>Selected skill : </p>
+  <p>
+    <span>Nom : {{skill.name}}</span>
+  </p>
+  <p>
+    <span>Interet : {{skill.interest.label}}</span>
+  </p>
+  <p>
+    <span>Niveau : {{skill.level.label}}</span>
+  </p>
+  <p>
+    <span>Score trend : {{skill.trend}}</span>
+  </p>
+</div>
+
+<button (click)="goBack()">go back</button>
+</div>

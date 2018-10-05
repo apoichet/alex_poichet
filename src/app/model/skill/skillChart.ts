@@ -1,4 +1,4 @@
-export class SkinChart{
+export class SkillChart{
   private _label: String;
   private _value: number;
   private _color: String;

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SkinService } from './skin.service';
+import { SkillService } from './skill.service';
 
-describe('SkinServiceService', () => {
+describe('SkillServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SkinService = TestBed.get(SkinService);
+    const service: SkillService = TestBed.get(SkillService);
     expect(service).toBeTruthy();
   });
 });

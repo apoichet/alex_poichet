@@ -1,5 +1,5 @@
 <div class="container content">
-<h2>Skins Comparing</h2>
+<h2>Skills Comparing</h2>
 
 <div class="card">
   <div class="card-body">
@@ -11,7 +11,7 @@
       <div class="col-md-12">
 
         <div class="md-form">
-          <input type="search" [(ngModel)]="skinSearch" id="search" class="form-control" mdbInputDirective [mdbValidate]="false">
+          <input type="search" [(ngModel)]="skillSearch" id="search" class="form-control" mdbInputDirective [mdbValidate]="false">
           <label for="search">Search</label>
         </div>
 
@@ -38,16 +38,16 @@
 
       <!--Table body-->
       <tbody>
-      <tr *ngFor="let skin of search(); let i = index">
+      <tr *ngFor="let skill of search(); let i = index">
         <th scope="row">{{i+1}}</th>
         <td>
-          <a routerLink="/skin-detail/{{skin.name}}">
-            <span><strong>{{skin.name}}</strong></span>
+          <a routerLink="/skill-detail/{{skill.name}}">
+            <span><strong>{{skill.name}}</strong></span>
           </a>
         </td>
-        <td>{{skin.interest.label}}</td>
-        <td>{{skin.level.label}}</td>
-        <td>{{skin.trend}}</td>
+        <td>{{skill.interest.label}}</td>
+        <td>{{skill.level.label}}</td>
+        <td>{{skill.trend}}</td>
       </tr>
 
       </tbody>

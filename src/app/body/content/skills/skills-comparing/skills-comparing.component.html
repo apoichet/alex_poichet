@@ -1,0 +1,36 @@
+<div class="content-extension">
+
+  <app-side-nav></app-side-nav>
+
+  <div class="container content">
+
+    <h2>Skills Comparing</h2>
+
+    <div class="chart container-fluid">
+      <canvas mdbChart
+              [chartType]="chartSkillsTrend.type"
+              [datasets]="chartSkillsTrend.datas"
+              [labels]="chartSkillsTrend.labels"
+              [colors]="chartSkillsTrend.colors"
+              [options]="chartSkillsTrend.option"
+              [legend]="true"
+              (chartHover)="chartHovered()"
+              (chartClick)="chartClicked()">
+      </canvas>
+    </div>
+
+    <div class="chart container-fluid">
+      <canvas mdbChart
+              [chartType]="chartSkillsLevelInterest.type"
+              [datasets]="chartSkillsLevelInterest.datas"
+              [labels]="chartSkillsLevelInterest.labels"
+              [options]="chartSkillsLevelInterest.option"
+              [colors]="chartSkillsLevelInterest.colors"
+              [legend]="true"
+              (chartHover)="chartHovered()"
+              (chartClick)="chartClicked()">
+      </canvas>
+
+    </div>
+  </div>
+</div>
