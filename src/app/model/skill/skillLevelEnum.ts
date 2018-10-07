@@ -1,4 +1,4 @@
-export enum SkillLevelEnum{
+export enum SkillLevelEnum {
   ROOKIE = 1,
   QUALIFIED,
   PRACTICED,

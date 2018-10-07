@@ -119,7 +119,12 @@ export class SkillsComparingComponent implements OnInit {
       label: skill.name
     }));
     this.chartSkillsTrend.option = {
-      'responsive': true
+      responsive: true,
+      elements: {
+        line: {
+          tension: 0, // disables bezier curves
+        }
+      }
     };
     this.chartSkillsTrend.colors = this.skills.map(() => {
       const randomColor = this.getRandomColor();

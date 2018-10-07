@@ -1,0 +1,49 @@
+.card {
+  box-shadow: none;
+}
+
+tr td,th {
+  vertical-align: middle;
+}
+
+tr td:last-of-type {
+  padding: 10px;
+}
+
+.chart {
+  width: 100px;
+}
+
+.skill-name {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.trend-score{
+  text-align: center;
+}
+
+.table thead th{
+  border-bottom: none;
+}
+
+.level {
+  color: #52a344;
+}
+
+.interest {
+  color: #953d38;
+}
+
+.progress{
+  margin: 5px;
+  height: 7px;
+}
+
+.progress-bar-level {
+  background-color: #52a344;
+}
+
+.progress-bar-interest {
+  background-color: #953d38;
+}

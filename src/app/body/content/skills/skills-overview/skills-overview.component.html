@@ -1,61 +1,84 @@
 <div class="container content">
-<h2>Skills Overview</h2>
+  <h2>Skills Overview</h2>
 
-<div class="card">
-  <div class="card-body">
+  <div class="card">
+    <div class="card-body">
 
-    <!-- Grid row -->
-    <div class="row">
+      <!-- Grid row -->
+      <div class="row">
 
-      <!-- Grid column -->
-      <div class="col-md-12">
+        <!-- Grid column -->
+        <div class="col-md-12">
 
-        <div class="md-form">
-          <input type="search" [(ngModel)]="skillSearch" id="search" class="form-control" mdbInputDirective [mdbValidate]="false">
-          <label for="search">Search</label>
+          <div class="md-form">
+            <input type="search" [(ngModel)]="skillSearch" id="search" class="form-control" mdbInputDirective [mdbValidate]="false">
+            <label for="search">Search</label>
+          </div>
+
         </div>
+        <!-- Grid column -->
 
       </div>
-      <!-- Grid column -->
+      <!-- Grid row -->
+
+      <!--Table-->
+      <table class="table">
+
+        <!--Table head-->
+        <thead>
+        <tr>
+          <th>#</th>
+          <th class="th-lg">Name</th>
+          <th class="th-lg">Level</th>
+          <th class="th-lg">Interest</th>
+          <th class="th-lg d-none d-lg-block">Level vs Interest</th>
+          <th class="th-lg trend-score">Trend Score</th>
+          <th class="th-lg">Trend</th>
+        </tr>
+        </thead>
+        <!--Table head-->
+
+        <!--Table body-->
+        <tbody>
+        <tr *ngFor="let skillOverview of search(); index as i">
+          <th scope="row">{{i+1}}</th>
+          <td class="skill-name">
+            <a routerLink="/skill-detail/{{skillOverview.skill.name}}">
+              <span>{{skillOverview.skill.name}}</span>
+            </a>
+          </td>
+          <td class="level"><strong>{{skillOverview.skill.level.label}}</strong></td>
+          <td class="interest"><strong>{{skillOverview.skill.interest.label}}</strong></td>
+          <td class="d-none d-lg-block">
+            <div class="progress">
+              <div class="progress-bar progress-bar-level" role="progressbar" [style.width.%]=buildProgressBarLevel(skillOverview.skill) aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-interest" role="progressbar" [style.width.%]=buildProgressBarInterest(skillOverview.skill) aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </td>
+          <td class="trend-score">{{skillOverview.skill.trend}}</td>
+          <td>
+            <div class="chart">
+              <canvas mdbChart
+                      [chartType]='skillOverview.chart.type'
+                      [datasets]="skillOverview.chart.datas"
+                      [labels]="skillOverview.chart.labels"
+                      [options]="skillOverview.chart.option"
+                      [colors]="skillOverview.chart.colors"
+                      [legend]="false">
+              </canvas>
+
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+        <!--Table body-->
+
+      </table>
+      <!--Table-->
 
     </div>
-    <!-- Grid row -->
-
-    <!--Table-->
-    <table class="table">
-
-      <!--Table head-->
-      <thead>
-      <tr>
-        <th>#</th>
-        <th class="th-lg">Name</th>
-        <th class="th-lg">Interest</th>
-        <th class="th-lg">Level</th>
-        <th class="th-lg">Trend Score</th>
-      </tr>
-      </thead>
-      <!--Table head-->
-
-      <!--Table body-->
-      <tbody>
-      <tr *ngFor="let skill of search(); let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>
-          <a routerLink="/skill-detail/{{skill.name}}">
-            <span><strong>{{skill.name}}</strong></span>
-          </a>
-        </td>
-        <td>{{skill.interest.label}}</td>
-        <td>{{skill.level.label}}</td>
-        <td>{{skill.trend}}</td>
-      </tr>
-
-      </tbody>
-      <!--Table body-->
-
-    </table>
-    <!--Table-->
-
   </div>
-</div>
 </div>
