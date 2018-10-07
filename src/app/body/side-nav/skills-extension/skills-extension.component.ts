@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SkillService} from '../../../services/skill.service';
+import {Skill} from '../../../model/skill/skill';
 
 @Component({
   selector: 'app-skills-extension',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsExtensionComponent implements OnInit {
 
-  constructor() { }
+  skills: Skill[];
+
+  constructor(private skillService: SkillService) { }
+
+  createSkills() {
+    this.skillService.getSkills().subscribe(skills => (this.skills = skills));
+  }
 
   ngOnInit() {
+    this.createSkills();
   }
 
 }

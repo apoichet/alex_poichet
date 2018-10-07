@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Skill} from '../../../../model/skill/skill';
 import {SkillService} from '../../../../services/skill.service';
+import {Chart} from '../skills-comparing/chart';
 
 @Component({
   selector: 'app-skills-overview',
@@ -10,8 +11,6 @@ import {SkillService} from '../../../../services/skill.service';
 export class SkillsOverviewComponent implements OnInit {
   skills: Skill[];
   skillSearch: String;
-  public test: String = '';
-
   constructor(private skillService: SkillService) {}
 
   ngOnInit() {

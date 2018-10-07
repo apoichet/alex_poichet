@@ -28,15 +28,18 @@ export class SkillsComparingComponent implements OnInit {
   }
 
   buildChartLevelInterest() {
+    const colorLevel = '#52a344';
+    const colorInterest = '#953d38';
+    const axisFontSize = 15;
     this.chartSkillsLevelInterest = new Chart('Skills', 'bar');
     this.chartSkillsLevelInterest.labels = this.skills.map(skill => skill.name);
     const interestDatas = this.skills.map(skill => skill.interest.value);
     const levelDatas = this.skills.map(skill => skill.level.value);
     this.chartSkillsLevelInterest.colors = [{
-      backgroundColor: '#80ff6b'
+      backgroundColor: colorLevel
     },
       {
-        backgroundColor: '#ff695f'
+        backgroundColor: colorInterest
       }];
     this.chartSkillsLevelInterest.datas = [
       {
@@ -53,6 +56,12 @@ export class SkillsComparingComponent implements OnInit {
     this.chartSkillsLevelInterest.option = {
       responsive: true,
       offsetGridLines: false,
+      legend: {
+        labels: {
+          padding: 20,
+          fontSize: 20
+        }
+      },
       scales: {
         yAxes: [{
           gridLines: {
@@ -62,6 +71,8 @@ export class SkillsComparingComponent implements OnInit {
           type: 'linear',
           position: 'left',
           ticks: {
+            fontSize: axisFontSize,
+            fontColor: colorLevel,
             callback: function(value) {
               const levelFind = SKILL_LEVEL.find(level => level.value === value);
               return levelFind ? levelFind.label : '';
@@ -78,6 +89,8 @@ export class SkillsComparingComponent implements OnInit {
           type: 'linear',
           position: 'right',
           ticks: {
+            fontSize: axisFontSize,
+            fontColor: colorInterest,
             callback: function(value) {
               const interestFind = SKILL_INTERESTS.find(interest => interest.value === value);
               return interestFind ? interestFind.label : '';
