@@ -8,6 +8,7 @@ export class User{
   private _adresse: String;
   private _mail: String;
   private _profession: String;
+  private _gitRepository: String;
   private _links: Link[];
 
   constructor(lastName: string, firstName: string, mail: String, profession: String) {
@@ -15,10 +16,19 @@ export class User{
     this._firstName = firstName;
     this._mail = mail;
     this._profession = profession;
+    this._gitRepository = 'https://github.com/apoichet';
     this._links = [new Link('http://www.univ-fcomte.fr', 'Université de Franche Comté - UFC'),
       new Link('http://www.afcepf.fr/', 'AFCEPF'),
-      new Link('https://www.pluralsight.com', 'Pluralsight'),
-      new Link('https://openclassrooms.com', 'Open Class Room')];
+      new Link('https://www.pluralsight.com', 'Pluralsight')];
+  }
+
+
+  get gitRepository(): String {
+    return this._gitRepository;
+  }
+
+  set gitRepository(value: String) {
+    this._gitRepository = value;
   }
 
   get links(): Link[] {
