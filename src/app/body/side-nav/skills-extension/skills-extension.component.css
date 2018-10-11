@@ -1,9 +1,15 @@
 .skills-extension div{
+  margin: auto auto 20px;
 
-  margin-bottom: 30px;
-  margin-left: 20%;
+}
+
+.skills-extension .select-all{
+  text-align: center;
+  width: 140px;
+}
+
+.skills-extension .custom-checkbox{
   width: 100px;
-
 }
 
 .skills-extension label{
@@ -13,7 +19,7 @@
 }
 
 .custom-control{
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 
 
