@@ -4,8 +4,7 @@
 }
 
 .skills-extension .select-all{
-  text-align: center;
-  width: 140px;
+  width: 200px;
 }
 
 .skills-extension .custom-checkbox{
@@ -16,6 +15,11 @@
 
 
 
+}
+
+.select-all label{
+  vertical-align: middle;
+  margin: 8px;
 }
 
 .custom-control{

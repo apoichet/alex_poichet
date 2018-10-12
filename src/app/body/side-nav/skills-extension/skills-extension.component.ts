@@ -9,6 +9,8 @@ import {Skill} from '../../../model/skill/skill';
 })
 export class SkillsExtensionComponent implements OnInit {
 
+  selectSwitchLabel: String;
+  selectAll: Boolean;
   skills: Skill[];
 
   constructor(private skillService: SkillService) { }
@@ -17,7 +19,14 @@ export class SkillsExtensionComponent implements OnInit {
     this.skillService.getSkills().subscribe(skills => (this.skills = skills));
   }
 
+  selectSwitch(){
+    console.log(this.selectAll);
+    this.selectAll = !this.selectAll;
+    this.selectSwitchLabel = this.selectAll ? 'Select All' : 'Deselect All';
+  }
+
   ngOnInit() {
+    this.selectSwitch();
     this.createSkills();
   }
 
