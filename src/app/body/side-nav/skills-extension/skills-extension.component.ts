@@ -10,7 +10,7 @@ import {Skill} from '../../../model/skill/skill';
 export class SkillsExtensionComponent implements OnInit {
 
   selectSwitchLabel: String;
-  selectAll: Boolean;
+  allSkillSelected: Boolean;
   skills: Skill[];
 
   constructor(private skillService: SkillService) { }
@@ -19,15 +19,22 @@ export class SkillsExtensionComponent implements OnInit {
     this.skillService.getSkills().subscribe(skills => (this.skills = skills));
   }
 
-  selectSwitch(){
-    console.log(this.selectAll);
-    this.selectAll = !this.selectAll;
-    this.selectSwitchLabel = this.selectAll ? 'Select All' : 'Deselect All';
+  switchLabel() {
+    this.selectSwitchLabel = this.allSkillSelected ? 'Deselect All' : 'Select All';
+  }
+
+  selectSwitch() {
+    this.allSkillSelected = !this.allSkillSelected;
+    this.switchLabel();
+  }
+
+  selectSkill(checked: HTMLInputElement) {
+    console.log(checked.id);
   }
 
   ngOnInit() {
-    this.selectSwitch();
     this.createSkills();
+    this.switchLabel();
   }
 
 }

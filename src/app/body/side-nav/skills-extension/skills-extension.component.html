@@ -8,7 +8,7 @@
   </div>
   <div *ngFor="let skill of skills">
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="{{skill.name}}">
+      <input (click)="selectSkill(skillCheck)" type="checkbox" class="custom-control-input" id="{{skill.name}}" [checked]="allSkillSelected" #skillCheck>
       <label class="custom-control-label" for="{{skill.name}}">{{skill.name}}</label>
     </div>
   </div>
