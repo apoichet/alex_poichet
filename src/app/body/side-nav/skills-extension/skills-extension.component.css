@@ -1,24 +1,26 @@
-.skills-extension div{
-  margin: auto auto 20px;
+.skills-extension .ng-star-inserted{
+  margin: auto auto 12px;
+  width: 100px;
 
 }
 
 .skills-extension .select-all{
+  margin: auto auto 20px;
   width: 200px;
 }
 
-.skills-extension .custom-checkbox{
-  width: 100px;
+.skills-extension .btn-extension {
+  margin-top: 30px;
+  text-align: center;
 }
+
 
 .select-all label{
   vertical-align: middle;
   margin: 8px;
 }
 
-.custom-control{
-  transform: scale(1.3);
-}
+
 
 
 

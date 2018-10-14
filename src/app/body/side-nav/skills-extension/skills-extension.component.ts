@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SkillService} from '../../../services/skill.service';
-import {Skill} from '../../../model/skill/skill';
 
 @Component({
   selector: 'app-skills-extension',
@@ -11,29 +10,45 @@ export class SkillsExtensionComponent implements OnInit {
 
   selectSwitchLabel: String;
   allSkillSelected: Boolean;
-  skills: Skill[];
+  skillsName: String[];
+  skillsNameSelected: String[];
 
   constructor(private skillService: SkillService) { }
 
-  createSkills() {
-    this.skillService.getSkills().subscribe(skills => (this.skills = skills));
+  loadSkills() {
+    this.skillService.filterSkills(this.skillsNameSelected);
+  }
+
+  initSkills() {
+    this.skillsNameSelected = [];
+    this.skillService.getSkills().subscribe(skills => (this.skillsName = skills.map(skill => skill.name)));
   }
 
   switchLabel() {
     this.selectSwitchLabel = this.allSkillSelected ? 'Deselect All' : 'Select All';
   }
 
+  selectSkill(skillCheck: HTMLInputElement) {
+    if (skillCheck.checked) {
+      this.skillsNameSelected.push(skillCheck.id);
+    } else {
+      const skillCheckIndex = this.skillsNameSelected.findIndex(name => name === skillCheck.id);
+      this.skillsNameSelected.splice(skillCheckIndex, 1);
+    }
+  }
+
   selectSwitch() {
     this.allSkillSelected = !this.allSkillSelected;
     this.switchLabel();
-  }
-
-  selectSkill(checked: HTMLInputElement) {
-    console.log(checked.id);
+    if (this.allSkillSelected) {
+      this.skillsNameSelected = this.skillsName.slice();
+    } else {
+      this.skillsNameSelected = [];
+    }
   }
 
   ngOnInit() {
-    this.createSkills();
+    this.initSkills();
     this.switchLabel();
   }
 

@@ -1,36 +1,45 @@
 <div class="content-extension">
 
-  <app-side-nav></app-side-nav>
+  <app-side-nav (loading)="sayCoucou($event)"></app-side-nav>
 
   <div class="container content">
 
     <h2>Skills Comparing</h2>
 
-    <div class="chart container-fluid">
-      <canvas mdbChart
-              [chartType]="chartSkillsTrend.type"
-              [datasets]="chartSkillsTrend.datas"
-              [labels]="chartSkillsTrend.labels"
-              [colors]="chartSkillsTrend.colors"
-              [options]="chartSkillsTrend.option"
-              [legend]="true"
-              (chartHover)="chartHovered()"
-              (chartClick)="chartClicked()">
-      </canvas>
+    <div *ngIf="showCharts">
+      <div class="chart container-fluid">
+        <canvas mdbChart
+                [chartType]="chartSkillsTrend.type"
+                [datasets]="chartSkillsTrend.datas"
+                [labels]="chartSkillsTrend.labels"
+                [colors]="chartSkillsTrend.colors"
+                [options]="chartSkillsTrend.option"
+                [legend]="true"
+                (chartHover)="chartHovered()"
+                (chartClick)="chartClicked()">
+        </canvas>
+      </div>
+      <div class="chart container-fluid">
+        <canvas mdbChart
+                [chartType]="chartSkillsLevelInterest.type"
+                [datasets]="chartSkillsLevelInterest.datas"
+                [labels]="chartSkillsLevelInterest.labels"
+                [options]="chartSkillsLevelInterest.option"
+                [colors]="chartSkillsLevelInterest.colors"
+                [legend]="true"
+                (chartHover)="chartHovered()"
+                (chartClick)="chartClicked()">
+        </canvas>
+      </div>
     </div>
 
-    <div class="chart container-fluid">
-      <canvas mdbChart
-              [chartType]="chartSkillsLevelInterest.type"
-              [datasets]="chartSkillsLevelInterest.datas"
-              [labels]="chartSkillsLevelInterest.labels"
-              [options]="chartSkillsLevelInterest.option"
-              [colors]="chartSkillsLevelInterest.colors"
-              [legend]="true"
-              (chartHover)="chartHovered()"
-              (chartClick)="chartClicked()">
-      </canvas>
-
+    <div *ngIf="!showCharts">
+      <div style="margin-top: 10%; margin-left: 25%;">
+        <h1>
+          Please select skills to show charts
+        </h1>
+      </div>
     </div>
+
   </div>
 </div>

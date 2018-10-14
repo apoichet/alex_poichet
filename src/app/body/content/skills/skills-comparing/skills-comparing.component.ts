@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SkillService} from '../../../../services/skill.service';
 import {Skill} from '../../../../model/skill/skill';
 import {Chart} from './chart';
-import {SKILL_INTERESTS, SKILL_LEVEL} from '../../../../services/mock-skills';
+import {SKILL_INTERESTS, SKILL_LEVEL, SKILLS} from '../../../../services/mock-skills';
 
 
 @Component({
@@ -12,19 +12,31 @@ import {SKILL_INTERESTS, SKILL_LEVEL} from '../../../../services/mock-skills';
 })
 export class SkillsComparingComponent implements OnInit {
   skills: Skill[];
-  public chartSkillsTrend: Chart;
-  public chartSkillsLevelInterest: Chart;
+  showCharts: Boolean;
+  chartSkillsTrend: Chart;
+  chartSkillsLevelInterest: Chart;
+  numberSkillsInit = 2;
 
   public chartClicked(): void {}
   public chartHovered(): void {}
 
-
   constructor(private skillService: SkillService) {}
 
   ngOnInit() {
+    this.showCharts = true;
     this.createSkills();
     this.buildChartTrend();
     this.buildChartLevelInterest();
+    this.skillService.loadSkills.subscribe(skillsLoaded => {
+      if (skillsLoaded && skillsLoaded.length > 0) {
+        this.skills = skillsLoaded;
+        this.buildChartTrend();
+        this.buildChartLevelInterest();
+        this.showCharts = true;
+      } else {
+        this.showCharts = false;
+      }
+    });
   }
 
   buildChartLevelInterest() {
@@ -130,6 +142,13 @@ export class SkillsComparingComponent implements OnInit {
         line: {
           tension: 0, // disables bezier curves
         }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0
+          }
+        }]
       }
     };
     this.chartSkillsTrend.colors = this.skills.map(() => {
@@ -148,7 +167,7 @@ export class SkillsComparingComponent implements OnInit {
   }
 
   createSkills() {
-    this.skillService.getSkills().subscribe(skills => (this.skills = skills));
+    this.skillService.getSkills().subscribe(skills => (this.skills = skills.slice(0, this.numberSkillsInit)));
   }
 
   private getRandomColor() {
