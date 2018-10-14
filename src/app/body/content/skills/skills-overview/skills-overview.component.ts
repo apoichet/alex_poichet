@@ -40,7 +40,7 @@ export class SkillsOverviewComponent implements OnInit {
     chart.labels = ['Septembre', 'Octobre', 'Novembre', 'Décembre'];
     chart.datas = [
       {label: skill.name,
-        data: Array.from({length: 4}, () => Math.floor(Math.random() * 5000)),
+        data: this.calculChartTrend(skill),
         pointRadius: 1
       }
     ];
@@ -85,4 +85,33 @@ export class SkillsOverviewComponent implements OnInit {
       });
     });
   }
+
+  calculChartTrend(skill: Skill) {
+    const array = Array.from({length: 3}, () => Math.floor(Math.random() * 5000));
+    const lastValue = skill.trend * 4 - array[0] - array[1] - array[2];
+    array.push(lastValue);
+    return array;
+  }
+
+  getPercentTrend(skillOverview: SkillOverview) {
+    const diff = this.calculDiff(skillOverview);
+    if (diff < 0) {
+      return '- ' + Math.abs(diff).toFixed(0) + ' %';
+    }
+    return '+ ' + Math.abs(diff).toFixed(0) + ' %';
+  }
+
+  getColorPercentTrend(skillOverview: SkillOverview) {
+    if (this.calculDiff(skillOverview) > 0) {
+      return '#52a344';
+    } else if (this.calculDiff(skillOverview) < 0) {
+      return '#953d38';
+    }
+  }
+
+  private calculDiff(skillOverview: SkillOverview) {
+    const datas = skillOverview.chart.datas[0];
+    return (datas.data[3] - skillOverview.skill.trend) / 100;
+  }
+
 }

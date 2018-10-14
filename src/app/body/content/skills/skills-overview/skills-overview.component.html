@@ -32,8 +32,9 @@
           <th class="th-lg">Level</th>
           <th class="th-lg">Interest</th>
           <th class="th-lg d-none d-lg-block">Level vs Interest</th>
-          <th class="th-lg trend-score">Trend Score</th>
+          <th class="th-lg number">Trend Score</th>
           <th class="th-lg">Trend</th>
+          <th class="th-lg number">Trend %</th>
         </tr>
         </thead>
         <!--Table head-->
@@ -57,7 +58,7 @@
               <div class="progress-bar progress-bar-interest" role="progressbar" [style.width.%]=buildProgressBarInterest(skillOverview.skill) aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </td>
-          <td class="trend-score">{{skillOverview.skill.trend}}</td>
+          <td class="number">{{skillOverview.skill.trend}}</td>
           <td>
             <div class="chart">
               <canvas mdbChart
@@ -70,6 +71,9 @@
               </canvas>
 
             </div>
+          </td>
+          <td [style.color]="getColorPercentTrend(skillOverview)" class="number">
+            {{getPercentTrend(skillOverview)}}
           </td>
         </tr>
 

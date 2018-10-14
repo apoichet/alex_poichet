@@ -120,6 +120,12 @@ export class SkillsComparingComponent implements OnInit {
     }));
     this.chartSkillsTrend.option = {
       responsive: true,
+      legend: {
+        labels: {
+          padding: 20,
+          fontSize: 20
+        }
+      },
       elements: {
         line: {
           tension: 0, // disables bezier curves
@@ -144,10 +150,9 @@ export class SkillsComparingComponent implements OnInit {
   createSkills() {
     this.skillService.getSkills().subscribe(skills => (this.skills = skills));
   }
+
   private getRandomColor() {
     const color = Math.floor(0x1000000 * Math.random()).toString(16);
     return '#' + ('000000' + color).slice(-6);
   }
-
-
 }
