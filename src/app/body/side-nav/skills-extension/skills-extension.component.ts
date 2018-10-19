@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SkillService} from '../../../services/skill.service';
+import {SkillExtension} from './skill-extension';
 
 @Component({
   selector: 'app-skills-extension',
@@ -10,18 +11,21 @@ export class SkillsExtensionComponent implements OnInit {
 
   selectSwitchLabel: String;
   allSkillSelected: Boolean;
-  skillsName: String[];
-  skillsNameSelected: String[];
+  skillsExtension: SkillExtension[];
+  numberSkillsInit = 2;
 
   constructor(private skillService: SkillService) { }
 
   loadSkills() {
-    this.skillService.filterSkills(this.skillsNameSelected);
+    const skillsNameSelected = this.skillsExtension.filter(skillExt => skillExt.checked).map(skillExt => skillExt.name);
+    this.skillService.filterSkills(skillsNameSelected);
   }
-
   initSkills() {
-    this.skillsNameSelected = [];
-    this.skillService.getSkills().subscribe(skills => (this.skillsName = skills.map(skill => skill.name)));
+    this.skillService.getSkills().subscribe(skills => this.skillsExtension =  skills.map(skill => new SkillExtension(skill.name)));
+    // Selectionne les trois premiers
+    this.skillsExtension.forEach((skillExt, index) => {if (index <= this.numberSkillsInit) {
+      skillExt.checked = true;
+    }});
   }
 
   switchLabel() {
@@ -29,26 +33,18 @@ export class SkillsExtensionComponent implements OnInit {
   }
 
   selectSkill(skillCheck: HTMLInputElement) {
-    if (skillCheck.checked) {
-      this.skillsNameSelected.push(skillCheck.id);
-    } else {
-      const skillCheckIndex = this.skillsNameSelected.findIndex(name => name === skillCheck.id);
-      this.skillsNameSelected.splice(skillCheckIndex, 1);
-    }
+    this.skillsExtension.filter(skillExt => skillCheck.id === skillExt.name).forEach(skillExt => skillExt.checked = skillCheck.checked);
   }
 
   selectSwitch() {
     this.allSkillSelected = !this.allSkillSelected;
+    this.skillsExtension.forEach(skillExt => skillExt.checked = this.allSkillSelected);
     this.switchLabel();
-    if (this.allSkillSelected) {
-      this.skillsNameSelected = this.skillsName.slice();
-    } else {
-      this.skillsNameSelected = [];
-    }
   }
 
   ngOnInit() {
     this.initSkills();
+    this.loadSkills();
     this.switchLabel();
   }
 

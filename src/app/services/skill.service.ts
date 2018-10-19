@@ -24,7 +24,6 @@ export class SkillService {
   }
 
   getSkills(): Observable<Skill[]> {
-    this.messageService.add('SkillService: fetched skillsName');
     return of(SKILLS);
   }
 

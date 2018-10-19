@@ -1,43 +1,40 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {SkillService} from '../../../../services/skill.service';
 import {Skill} from '../../../../model/skill/skill';
 import {Chart} from './chart';
-import {SKILL_INTERESTS, SKILL_LEVEL, SKILLS} from '../../../../services/mock-skills';
-
+import {SKILL_INTERESTS, SKILL_LEVEL} from '../../../../services/mock-skills';
+import {Observable, of} from 'rxjs';
+import {startWith, tap} from 'rxjs/operators';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Default,
   selector: 'app-skills-comparing',
   templateUrl: './skills-comparing.component.html',
   styleUrls: ['./skills-comparing.component.css']
 })
 export class SkillsComparingComponent implements OnInit {
   skills: Skill[];
-  showCharts: Boolean;
+  showChart: Observable<Boolean>;
   chartSkillsTrend: Chart;
   chartSkillsLevelInterest: Chart;
-  numberSkillsInit = 2;
-
   public chartClicked(): void {}
   public chartHovered(): void {}
 
   constructor(private skillService: SkillService) {}
 
-  ngOnInit() {
-    this.showCharts = true;
-    this.createSkills();
-    this.buildChartTrend();
-    this.buildChartLevelInterest();
-    this.skillService.loadSkills.subscribe(skillsLoaded => {
-      if (skillsLoaded && skillsLoaded.length > 0) {
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.skillService.loadSkills.subscribe(skillsLoaded => {
+        console.log('ha');
         this.skills = skillsLoaded;
-        this.buildChartTrend();
-        this.buildChartLevelInterest();
-        this.showCharts = true;
-      } else {
-        this.showCharts = false;
-      }
-    });
+        this.showChart.pipe(
+          startWith(false),
+          tap(() => this.skills && this.skills.length > 0)
+        );
+      });
+    }
   }
+
 
   buildChartLevelInterest() {
     const colorLevel = '#52a344';
@@ -164,10 +161,6 @@ export class SkillsComparingComponent implements OnInit {
         pointHoverBorderColor: randomColor
       };
     });
-  }
-
-  createSkills() {
-    this.skillService.getSkills().subscribe(skills => (this.skills = skills.slice(0, this.numberSkillsInit)));
   }
 
   private getRandomColor() {
