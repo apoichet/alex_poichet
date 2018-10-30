@@ -1,10 +1,8 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {SkillService} from '../../../../services/skill.service';
 import {Skill} from '../../../../model/skill/skill';
 import {Chart} from './chart';
 import {SKILL_INTERESTS, SKILL_LEVEL} from '../../../../services/mock-skills';
-import {Observable, of} from 'rxjs';
-import {startWith, tap} from 'rxjs/operators';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
@@ -12,27 +10,29 @@ import {startWith, tap} from 'rxjs/operators';
   templateUrl: './skills-comparing.component.html',
   styleUrls: ['./skills-comparing.component.css']
 })
-export class SkillsComparingComponent implements OnInit {
+export class SkillsComparingComponent implements OnInit, AfterViewInit {
   skills: Skill[];
-  showChart: Observable<Boolean>;
   chartSkillsTrend: Chart;
   chartSkillsLevelInterest: Chart;
-  public chartClicked(): void {}
-  public chartHovered(): void {}
 
-  constructor(private skillService: SkillService) {}
+  isShowChart(){
+    return this.skills && this.skills.length > 0;
+  }
+
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
+
+  constructor(private skillService: SkillService, private cdRef : ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
       this.skillService.loadSkills.subscribe(skillsLoaded => {
-        console.log('ha');
         this.skills = skillsLoaded;
-        this.showChart.pipe(
-          startWith(false),
-          tap(() => this.skills && this.skills.length > 0)
-        );
+        if (this.isShowChart()){
+          this.buildChartLevelInterest();
+          this.buildChartTrend();
+        }
       });
-    }
   }
 
 

@@ -1,12 +1,12 @@
 <div class="content-extension">
 
-  <app-side-nav (loading)="sayCoucou($event)"></app-side-nav>
+  <app-side-nav></app-side-nav>
 
   <div class="container content">
 
     <h2>Skills Comparing</h2>
 
-    <div *ngIf="showChart | async">
+    <div *ngIf="isShowChart()">
       <div class="chart container-fluid">
         <canvas mdbChart
                 [chartType]="chartSkillsTrend.type"
@@ -14,9 +14,7 @@
                 [labels]="chartSkillsTrend.labels"
                 [colors]="chartSkillsTrend.colors"
                 [options]="chartSkillsTrend.option"
-                [legend]="true"
-                (chartHover)="chartHovered()"
-                (chartClick)="chartClicked()">
+                [legend]="true">
         </canvas>
       </div>
       <div class="chart container-fluid">
@@ -26,9 +24,7 @@
                 [labels]="chartSkillsLevelInterest.labels"
                 [options]="chartSkillsLevelInterest.option"
                 [colors]="chartSkillsLevelInterest.colors"
-                [legend]="true"
-                (chartHover)="chartHovered()"
-                (chartClick)="chartClicked()">
+                [legend]="true">
         </canvas>
       </div>
     </div>
