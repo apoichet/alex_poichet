@@ -57,6 +57,9 @@ export class SkillsOverviewComponent implements OnInit {
           tension: 0,
         }
       },
+      tooltips: {
+        enabled: false
+      },
       scales: {
         xAxes: [{
           display: false
@@ -81,7 +84,7 @@ export class SkillsOverviewComponent implements OnInit {
   filterSkill(arr, searchKey) {
     return arr.filter((obj) => {
       return Object.keys(obj['skill']).some((key) => {
-        return obj['skill'][key].toString().includes(searchKey);
+        return obj['skill'][key].toString().includes(searchKey.toLowerCase());
       });
     });
   }
