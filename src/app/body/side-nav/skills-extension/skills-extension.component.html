@@ -7,10 +7,11 @@
     <label>{{selectSwitchLabel}}</label>
   </div>
   <div *ngFor="let skillExtension of skillsExtension">
-    <div class="custom-control custom-checkbox">
-      <input (change)="selectSkill(skillCheck)" type="checkbox" class="custom-control-input" id="{{skillExtension.name}}" [checked]="skillExtension.checked || allSkillSelected" #skillCheck>
-      <label class="custom-control-label" for="{{skillExtension.name}}">{{skillExtension.name}}</label>
-    </div>
+    <app-skill-extension [skillCheck]="skillExtension.checked"
+                         [skillColor]="skillExtension.skill.color"
+                         [skillName]="skillExtension.skill.name"
+                         (skillSelected)="onSkillSelected($event, skillExtension)" >
+    </app-skill-extension>
   </div>
   <div class="btn-extension">
     <button (click)="loadSkills()" type="button" class="btn btn-primary btn-md">Load</button>

@@ -17,15 +17,12 @@ export class SkillsExtensionComponent implements OnInit {
   constructor(private skillService: SkillService) { }
 
   loadSkills() {
-    const skillsNameSelected = this.skillsExtension.filter(skillExt => skillExt.checked).map(skillExt => skillExt.name);
+    const skillsNameSelected = this.skillsExtension.filter(skillExt => skillExt.checked).map(skillExt => skillExt.skill.name);
     this.skillService.filterSkills(skillsNameSelected);
   }
   initSkills() {
-    this.skillService.getSkills().subscribe(skills => this.skillsExtension =  skills.map(skill => new SkillExtension(skill.name)));
-    // Selectionne les trois premiers
-    this.skillsExtension.forEach((skillExt, index) => {if (index <= this.numberSkillsInit) {
-      skillExt.checked = true;
-    }});
+    this.skillService.getSkills().subscribe(skills =>
+      this.skillsExtension =  skills.map((skill, index) => new SkillExtension(skill, index < this.numberSkillsInit)));
   }
 
   switchLabel() {
@@ -33,13 +30,18 @@ export class SkillsExtensionComponent implements OnInit {
   }
 
   selectSkill(skillCheck: HTMLInputElement) {
-    this.skillsExtension.filter(skillExt => skillCheck.id === skillExt.name).forEach(skillExt => skillExt.checked = skillCheck.checked);
+    this.skillsExtension.filter(skillExt => skillCheck.id === skillExt.skill.name)
+      .forEach(skillExt => skillExt.checked = skillCheck.checked);
   }
 
   selectSwitch() {
     this.allSkillSelected = !this.allSkillSelected;
     this.skillsExtension.forEach(skillExt => skillExt.checked = this.allSkillSelected);
     this.switchLabel();
+  }
+
+  onSkillSelected(check: Boolean, skillExtension: SkillExtension){
+    skillExtension.checked = check;
   }
 
   ngOnInit() {

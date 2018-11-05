@@ -1,12 +1,12 @@
-import {Skill} from '../../../../model/skill/skill';
+import {ISkill} from '../../../../shared/skill/skill';
 import {Chart} from '../skills-comparing/chart';
 
 export class SkillOverview {
 
   private _chart: Chart;
-  private _skill: Skill;
+  private _skill: ISkill;
 
-  constructor(skill: Skill, chart: Chart) {
+  constructor(skill: ISkill, chart: Chart) {
     this._chart = chart;
     this._skill = skill;
   }
@@ -15,7 +15,7 @@ export class SkillOverview {
     return this._chart;
   }
 
-  get skill(): Skill {
+  get skill(): ISkill {
     return this._skill;
   }
 }

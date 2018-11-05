@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Skill} from '../../../../model/skill/skill';
+import {ISkill} from '../../../../shared/skill/skill';
 import {SkillService} from '../../../../services/skill.service';
 
-import {SkillLevelEnum} from '../../../../model/skill/skillLevelEnum';
-import {SkillInterestEnum} from '../../../../model/skill/skillInterestEnum';
+import {SkillLevelEnum} from '../../../../shared/skill/skill-level.enum';
+import {SkillInterestEnum} from '../../../../shared/skill/skill-interest.enum';
 import {SkillOverview} from './skill-overview';
 import {Chart} from '../skills-comparing/chart';
 
@@ -27,15 +27,15 @@ export class SkillsOverviewComponent implements OnInit {
         this.skills = skills.map(skill => new SkillOverview(skill, this.buildChartTrend(skill))));
   }
 
-  buildProgressBarLevel(skill: Skill) {
-    return skill.level.value * 100 * 2 / Object.keys(SkillLevelEnum).length;
+  buildProgressBarLevel(skill: ISkill) {
+    return skill.level * 100 * 2 / Object.keys(SkillLevelEnum).length;
   }
 
-  buildProgressBarInterest(skill: Skill) {
-    return skill.interest.value * 100 * 2 / Object.keys(SkillInterestEnum).length;
+  buildProgressBarInterest(skill: ISkill) {
+    return skill.interest * 100 * 2 / Object.keys(SkillInterestEnum).length;
   }
 
-  buildChartTrend(skill: Skill) {
+  buildChartTrend(skill: ISkill) {
     const chart = new Chart(skill.name, 'line');
     chart.labels = ['Septembre', 'Octobre', 'Novembre', 'Décembre'];
     chart.datas = [
@@ -89,9 +89,9 @@ export class SkillsOverviewComponent implements OnInit {
     });
   }
 
-  calculChartTrend(skill: Skill) {
+  calculChartTrend(skill: ISkill) {
     const array = Array.from({length: 3}, () => Math.floor(Math.random() * 5000));
-    const lastValue = skill.trend * 4 - array[0] - array[1] - array[2];
+    const lastValue = skill.calculTrendAverage() * 4 - array[0] - array[1] - array[2];
     array.push(lastValue);
     return array;
   }
@@ -114,7 +114,7 @@ export class SkillsOverviewComponent implements OnInit {
 
   private calculDiff(skillOverview: SkillOverview) {
     const datas = skillOverview.chart.datas[0];
-    return (datas.data[3] - skillOverview.skill.trend) / 100;
+    return (datas.data[3] - skillOverview.skill.calculTrendAverage()) / 100;
   }
 
 }

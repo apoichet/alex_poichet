@@ -1,27 +1,22 @@
-import {Skill} from '../model/skill/skill';
-import {SkillInterestEnum} from '../model/skill/skillInterestEnum';
-import {SkillLevelEnum} from '../model/skill/skillLevelEnum';
-import {SkillLevel} from '../model/skill/skillLevel';
-import {SkillInterest} from '../model/skill/skillInterest';
+import {Skill} from '../shared/skill/skill';
+import {SkillInterestEnum} from '../shared/skill/skill-interest.enum';
+import {SkillLevelEnum} from '../shared/skill/skill-level.enum';
+import {SkillTrend} from '../shared/skill/skill-trend';
 
-const LOW = new SkillInterest('Low', SkillInterestEnum.LOW);
-const MEDIUM = new SkillInterest('Medium', SkillInterestEnum.MEDIUM);
-const HIGH = new SkillInterest('High', SkillInterestEnum.HIGH);
-export const SKILL_INTERESTS = [LOW, MEDIUM, HIGH];
+export function getRandomColor(): String {
+  return '#' +  ('000000' + Math.floor(0x1000000 * Math.random()).toString(16)).slice(-6);
+}
 
-const ROOKIE = new SkillLevel('Rookie', SkillLevelEnum.ROOKIE);
-const QUALIFIED = new SkillLevel('Qualified', SkillLevelEnum.QUALIFIED);
-const PRACTICED = new SkillLevel('Practiced', SkillLevelEnum.PRACTICED);
-const SKILLFULL = new SkillLevel('Skill Full', SkillLevelEnum.SKILLFULL);
-export const SKILL_LEVEL = [ROOKIE, QUALIFIED, PRACTICED, SKILLFULL];
+export function getRandomTrendDatas(): SkillTrend[] {
+  return [];
+}
 
-
-export const SKILLS: Skill[] = [new Skill('python', HIGH, 4800, ROOKIE)
-  , new Skill('java', HIGH, 3200, PRACTICED)
-  , new Skill('java script', MEDIUM, 3100, QUALIFIED)
-  , new Skill('scala', HIGH, 500, ROOKIE)
-  , new Skill('kotlin', HIGH, 2000, ROOKIE)
-  , new Skill('nodejs', HIGH, 700, QUALIFIED)
-  , new Skill('angularJs', LOW, 200, PRACTICED)
-  , new Skill('angular', HIGH, 1200, ROOKIE)
+export const SKILLS: Skill[] = [new Skill('python',  SkillInterestEnum.HIGH, SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
+  , new Skill('java',  SkillInterestEnum.HIGH,  SkillLevelEnum.PRACTICED, getRandomColor(), getRandomTrendDatas())
+  , new Skill('java script', SkillInterestEnum.MEDIUM,  SkillLevelEnum.QUALIFIED, getRandomColor(), getRandomTrendDatas())
+  , new Skill('scala',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
+  , new Skill('kotlin',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
+  , new Skill('nodejs',  SkillInterestEnum.HIGH,  SkillLevelEnum.QUALIFIED, getRandomColor(), getRandomTrendDatas())
+  , new Skill('angularJs', SkillInterestEnum.LOW,  SkillLevelEnum.PRACTICED, getRandomColor(), getRandomTrendDatas())
+  , new Skill('angular',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
 ];

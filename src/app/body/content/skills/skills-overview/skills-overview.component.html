@@ -32,9 +32,9 @@
           <th class="th-lg">Level</th>
           <th class="th-lg">Interest</th>
           <th class="th-lg d-none d-lg-block">Level vs Interest</th>
-          <th class="th-lg number">Trend Score</th>
-          <th class="th-lg">Trend</th>
-          <th class="th-lg number">Trend %</th>
+          <th class="th-lg number">SkillTrend Score</th>
+          <th class="th-lg">SkillTrend</th>
+          <th class="th-lg number">SkillTrend %</th>
         </tr>
         </thead>
         <!--Table head-->
@@ -48,8 +48,8 @@
               <span>{{skillOverview.skill.name}}</span>
             </a>
           </td>
-          <td class="level"><strong>{{skillOverview.skill.level.label}}</strong></td>
-          <td class="interest"><strong>{{skillOverview.skill.interest.label}}</strong></td>
+          <td class="level"><strong>{{skillOverview.skill.getLevel()}}</strong></td>
+          <td class="interest"><strong>{{skillOverview.skill.getInterest()}}</strong></td>
           <td class="d-none d-lg-block">
             <div class="progress">
               <div class="progress-bar progress-bar-level" role="progressbar" [style.width.%]=buildProgressBarLevel(skillOverview.skill) aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -58,7 +58,7 @@
               <div class="progress-bar progress-bar-interest" role="progressbar" [style.width.%]=buildProgressBarInterest(skillOverview.skill) aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </td>
-          <td class="number">{{skillOverview.skill.trend}}</td>
+          <td class="number">{{skillOverview.skill.calculTrendAverage()}}</td>
           <td>
             <div class="chart">
               <canvas mdbChart

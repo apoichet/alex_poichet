@@ -1,20 +1,18 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import { Skill } from '../model/skill/skill';
-import { SKILLS } from './mock-skills';
-import { Observable, of } from 'rxjs';
-import { MessageService } from './messages.service';
+import {ISkill} from '../shared/skill/skill';
+import {SKILLS} from './mock-skills';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillService {
 
-  skills: Skill[];
+  skills: ISkill[];
 
-  @Output() loadSkills = new EventEmitter<Skill[]>();
+  @Output() loadSkills = new EventEmitter<ISkill[]>();
 
-  getSkill(name: string): Observable<Skill> {
-    this.messageService.add(`SkillService: fetched skill ${name}`);
+  getSkill(name: string): Observable<ISkill> {
     return of(SKILLS.find(skill => skill.name === name));
   }
 
@@ -23,9 +21,9 @@ export class SkillService {
     this.loadSkills.emit(skillsFiltered);
   }
 
-  getSkills(): Observable<Skill[]> {
+  getSkills(): Observable<ISkill[]> {
     return of(SKILLS);
   }
 
-  constructor(private messageService: MessageService) { }
+  constructor() { }
 }
