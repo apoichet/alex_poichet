@@ -1,4 +1,4 @@
-export class Chart{
+export class Chart {
   private _title: String;
   private _labels: Array<any>
   private _datas: Array<any>;
@@ -20,11 +20,11 @@ export class Chart{
     this._title = value;
   }
 
-  get labels(): String[] {
+  get labels(): Array<any> {
     return this._labels;
   }
 
-  set labels(value: String[]) {
+  set labels(value: Array<any>) {
     this._labels = value;
   }
 

@@ -7,8 +7,38 @@ export function getRandomColor(): String {
   return '#' +  ('000000' + Math.floor(0x1000000 * Math.random()).toString(16)).slice(-6);
 }
 
+export function randomValue(): number {
+  return Math.round(Math.random() * 100);
+}
+
+export function mockDates(): Date[] {
+  return [new Date(2018, 1, 15),
+    new Date(2018, 2, 15),
+    new Date(2018, 3, 15),
+    new Date(2018, 4, 15),
+    new Date(2018, 5, 15),
+    new Date(2018, 6, 15),
+    new Date(2018, 7, 15),
+    new Date(2018, 8, 15),
+    new Date(2018, 9, 15),
+    new Date(2018, 10, 15),
+    new Date(2018, 11, 15),
+    new Date(2018, 12, 15)];
+}
+
 export function getRandomTrendDatas(): SkillTrend[] {
-  return [];
+  return [new SkillTrend([randomValue()], mockDates()[0]),
+    new SkillTrend([randomValue()], mockDates()[1]),
+    new SkillTrend([randomValue()], mockDates()[2]),
+    new SkillTrend([randomValue()], mockDates()[3]),
+    new SkillTrend([randomValue()], mockDates()[4]),
+    new SkillTrend([randomValue()], mockDates()[5]),
+    new SkillTrend([randomValue()], mockDates()[6]),
+    new SkillTrend([randomValue()], mockDates()[7]),
+    new SkillTrend([randomValue()], mockDates()[8]),
+    new SkillTrend([randomValue()], mockDates()[9]),
+    new SkillTrend([randomValue()], mockDates()[10]),
+    new SkillTrend([randomValue()], mockDates()[11])];
 }
 
 export const SKILLS: Skill[] = [new Skill('python',  SkillInterestEnum.HIGH, SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())

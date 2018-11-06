@@ -7,7 +7,38 @@
     <h2>Skills Comparing</h2>
 
     <div *ngIf="isShowChart()">
-      <h1>Go charts !</h1>
+      <div class="row container chart" id="chart-line-trend">
+        <canvas mdbChart
+                [chartType]='chartLineTrend.type'
+                [datasets]="chartLineTrend.datas"
+                [labels]="chartLineTrend.labels"
+                [options]="chartLineTrend.option"
+                [colors]="chartLineTrend.colors"
+                [legend]="false">
+        </canvas>
+      </div>
+      <div class="row container">
+        <div class="col-md-4 chart">
+          <canvas mdbChart
+                  [chartType]='chartDoughnutTrend.type'
+                  [datasets]="chartDoughnutTrend.datas"
+                  [labels]="chartDoughnutTrend.labels"
+                  [options]="chartDoughnutTrend.option"
+                  [colors]="chartDoughnutTrend.colors"
+                  [legend]="false">
+          </canvas>
+        </div>
+        <div class="col-md-8">
+          <canvas mdbChart
+                  [chartType]='chartBarTrend.type'
+                  [datasets]="chartBarTrend.datas"
+                  [labels]="chartBarTrend.labels"
+                  [options]="chartBarTrend.option"
+                  [colors]="chartBarTrend.colors"
+                  [legend]="false">
+          </canvas>
+        </div>
+      </div>
     </div>
 
   </div>

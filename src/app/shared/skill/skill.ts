@@ -21,8 +21,10 @@ export class Skill implements ISkill {
   private _interest: SkillInterestEnum;
   private _level: SkillLevelEnum;
   private _color: String;
+
   calculTrendAverage(): number {
-    return 0;
+    const sum = this._trendDatas.map(trend => trend.value[0]).reduce((t1, t2) => t1 + t2);
+    return Math.round(sum / this._trendDatas.length);
   }
 
   constructor(name: string, interest: SkillInterestEnum, level: SkillLevelEnum, color: String, trendDatas: SkillTrend[]) {

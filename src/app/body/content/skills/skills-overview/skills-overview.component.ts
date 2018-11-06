@@ -5,7 +5,7 @@ import {SkillService} from '../../../../services/skill.service';
 import {SkillLevelEnum} from '../../../../shared/skill/skill-level.enum';
 import {SkillInterestEnum} from '../../../../shared/skill/skill-interest.enum';
 import {SkillOverview} from './skill-overview';
-import {Chart} from '../skills-comparing/chart';
+import {Chart} from '../../../../shared/chart';
 
 @Component({
   selector: 'app-skills-overview',

@@ -1,5 +1,5 @@
 import {ISkill} from '../../../../shared/skill/skill';
-import {Chart} from '../skills-comparing/chart';
+import {Chart} from '../../../../shared/chart';
 
 export class SkillOverview {
 

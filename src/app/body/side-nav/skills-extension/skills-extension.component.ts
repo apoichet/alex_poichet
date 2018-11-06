@@ -29,19 +29,16 @@ export class SkillsExtensionComponent implements OnInit {
     this.selectSwitchLabel = this.allSkillSelected ? 'Deselect All' : 'Select All';
   }
 
-  selectSkill(skillCheck: HTMLInputElement) {
-    this.skillsExtension.filter(skillExt => skillCheck.id === skillExt.skill.name)
-      .forEach(skillExt => skillExt.checked = skillCheck.checked);
-  }
-
   selectSwitch() {
     this.allSkillSelected = !this.allSkillSelected;
     this.skillsExtension.forEach(skillExt => skillExt.checked = this.allSkillSelected);
     this.switchLabel();
+    this.loadSkills();
   }
 
   onSkillSelected(check: Boolean, skillExtension: SkillExtension){
     skillExtension.checked = check;
+    this.loadSkills();
   }
 
   ngOnInit() {
