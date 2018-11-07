@@ -37,6 +37,9 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
   }
 
   buildChartLineTrend() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
     this.chartLineTrend = new Chart('Trending Chronolgy', 'line');
     this.chartLineTrend.labels = this.skills[0].trendDatas.map(trend => trend.date);
     this.chartLineTrend.datas = this.skills.map(skill => {
@@ -49,35 +52,46 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
     });
     this.chartLineTrend.colors = this.skills.map(skill => skill.color);
     this.chartLineTrend.option = {
+      tooltips: {
+        callbacks: {
+          title: function(tooltipItems) {
+            const date = new Date(tooltipItems[0].xLabel);
+            return monthNames[date.getMonth()] + ' ' + date.getFullYear();
+          },
+        }
+      },
       animation: false,
       responsive: true,
       offsetGridLines: false,
       elements: {
         line: {
           tension: 0.1,
-        }
+        },
+        point: { radius: 1 }
       },
       scales: {
         xAxes: [{
+          gridLines: {
+            display: false,
+          },
           type: 'time',
           time: {
-            unit: 'day',
-            unitStepSize: 100,
-            displayFormats: {
-              'month': 'MMM DD'
-            }
+            unit: 'month'
           }
         }],
         yAxes: [{
           ticks: {
             min: 0,
-            max: 100
+            max: 100,
+            stepSize: 25
           },
         }]
       }
 
     };
   }
+
+
 
   buildChartDougnhutTrend() {
     this.chartDoughnutTrend = new Chart('chart trend doughnut', 'doughnut');
@@ -108,10 +122,16 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
       responsive: true,
       offsetGridLines: false,
       scales: {
+        xAxes: [{
+          gridLines: {
+            display: false,
+          },
+        }],
         yAxes: [{
           ticks: {
             min: 0,
-            max: 100
+            max: 100,
+            stepSize: 25
           },
         }]}
     };

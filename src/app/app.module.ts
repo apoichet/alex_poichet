@@ -21,6 +21,7 @@ import {SkillsExtensionComponent} from './body/side-nav/skills-extension/skills-
 import {SideNavComponent} from './body/side-nav/side-nav.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SkillExtensionComponent} from './body/side-nav/skills-extension/skill-extension.component';
+import {ArraySortPipe} from './shared/array-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {SkillExtensionComponent} from './body/side-nav/skills-extension/skill-ex
     ContactComponent,
     SkillsExtensionComponent,
     SkillExtensionComponent,
-    SideNavComponent
+    SideNavComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,

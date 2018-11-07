@@ -1,8 +1,8 @@
 export enum SkillLevelEnum {
-  ROOKIE = 1,
-  QUALIFIED,
-  PRACTICED,
-  SKILLFULL
+  Rookie = 1,
+  Qualified,
+  Practiced,
+  Skillfull
 }
 
 

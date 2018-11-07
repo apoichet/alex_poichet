@@ -6,7 +6,7 @@
     </label>
     <label>{{selectSwitchLabel}}</label>
   </div>
-  <div *ngFor="let skillExtension of skillsExtension">
+  <div *ngFor="let skillExtension of sortSkills()">
     <app-skill-extension [skillCheck]="skillExtension.checked"
                          [skillColor]="skillExtension.skill.color"
                          [skillName]="skillExtension.skill.name"

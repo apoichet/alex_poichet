@@ -40,8 +40,7 @@ export class SkillsOverviewComponent implements OnInit {
     chart.labels = ['Septembre', 'Octobre', 'Novembre', 'Décembre'];
     chart.datas = [
       {label: skill.name,
-        data: this.calculChartTrend(skill),
-        pointRadius: 1
+        data: this.calculChartTrend(skill)
       }
     ];
     chart.colors = [{
@@ -55,7 +54,8 @@ export class SkillsOverviewComponent implements OnInit {
       elements: {
         line: {
           tension: 0,
-        }
+        },
+        point: { radius: 1 }
       },
       tooltips: {
         enabled: false

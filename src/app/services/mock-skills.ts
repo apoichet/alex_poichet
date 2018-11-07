@@ -41,12 +41,12 @@ export function getRandomTrendDatas(): SkillTrend[] {
     new SkillTrend([randomValue()], mockDates()[11])];
 }
 
-export const SKILLS: Skill[] = [new Skill('python',  SkillInterestEnum.HIGH, SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
-  , new Skill('java',  SkillInterestEnum.HIGH,  SkillLevelEnum.PRACTICED, getRandomColor(), getRandomTrendDatas())
-  , new Skill('java script', SkillInterestEnum.MEDIUM,  SkillLevelEnum.QUALIFIED, getRandomColor(), getRandomTrendDatas())
-  , new Skill('scala',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
-  , new Skill('kotlin',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
-  , new Skill('nodejs',  SkillInterestEnum.HIGH,  SkillLevelEnum.QUALIFIED, getRandomColor(), getRandomTrendDatas())
-  , new Skill('angularJs', SkillInterestEnum.LOW,  SkillLevelEnum.PRACTICED, getRandomColor(), getRandomTrendDatas())
-  , new Skill('angular',  SkillInterestEnum.HIGH,  SkillLevelEnum.ROOKIE, getRandomColor(), getRandomTrendDatas())
+export const SKILLS: Skill[] = [new Skill('python',  SkillInterestEnum.High, SkillLevelEnum.Rookie, getRandomColor(), getRandomTrendDatas())
+  , new Skill('java',  SkillInterestEnum.High,  SkillLevelEnum.Practiced, getRandomColor(), getRandomTrendDatas())
+  , new Skill('java script', SkillInterestEnum.Medium,  SkillLevelEnum.Qualified, getRandomColor(), getRandomTrendDatas())
+  , new Skill('scala',  SkillInterestEnum.High,  SkillLevelEnum.Rookie, getRandomColor(), getRandomTrendDatas())
+  , new Skill('kotlin',  SkillInterestEnum.High,  SkillLevelEnum.Rookie, getRandomColor(), getRandomTrendDatas())
+  , new Skill('nodejs',  SkillInterestEnum.High,  SkillLevelEnum.Qualified, getRandomColor(), getRandomTrendDatas())
+  , new Skill('angularJs', SkillInterestEnum.Low,  SkillLevelEnum.Practiced, getRandomColor(), getRandomTrendDatas())
+  , new Skill('angular',  SkillInterestEnum.High,  SkillLevelEnum.Rookie, getRandomColor(), getRandomTrendDatas())
 ];

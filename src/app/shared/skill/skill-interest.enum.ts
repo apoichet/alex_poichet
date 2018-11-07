@@ -1,5 +1,5 @@
 export enum SkillInterestEnum{
-  LOW = 1,
-  MEDIUM,
-  HIGH
+  Low = 1,
+  Medium,
+  High
 }

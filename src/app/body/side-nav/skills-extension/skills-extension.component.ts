@@ -36,6 +36,11 @@ export class SkillsExtensionComponent implements OnInit {
     this.loadSkills();
   }
 
+  sortSkills() {
+    return this.skillsExtension.sort((skill1, skill2) => skill1.checked === skill2.checked ?
+      skill1.skill.name.localeCompare(skill2.skill.name) : skill1.checked ? -1 : 1);
+  }
+
   onSkillSelected(check: Boolean, skillExtension: SkillExtension){
     skillExtension.checked = check;
     this.loadSkills();
@@ -46,5 +51,7 @@ export class SkillsExtensionComponent implements OnInit {
     this.loadSkills();
     this.switchLabel();
   }
+
+
 
 }
