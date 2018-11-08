@@ -37,8 +37,8 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
   }
 
   buildChartLineTrend() {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
     ];
     this.chartLineTrend = new Chart('Trending Chronolgy', 'line');
     this.chartLineTrend.labels = this.skills[0].trendDatas.map(trend => trend.date);
@@ -46,6 +46,7 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
       const chart = new SkillMultipleDataChart();
       chart.data = skill.trendDatas.map(trend => trend.value[0]);
       chart.borderColor = skill.color;
+      chart.pointBackgroundColor =  skill.color;
       chart.fill = false;
       chart.label = skill.name;
       return Object.assign(chart);
@@ -65,9 +66,9 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
       offsetGridLines: false,
       elements: {
         line: {
-          tension: 0.1,
+          tension: 0.2,
         },
-        point: { radius: 1 }
+        point: { radius: 1.5 }
       },
       scales: {
         xAxes: [{
@@ -149,4 +150,5 @@ export class SkillMultipleDataChart {
   label: any;
   borderColor: String;
   fill: Boolean;
+  pointBackgroundColor: String;
 }
