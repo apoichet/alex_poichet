@@ -44,7 +44,7 @@ export class SkillsComparingComponent implements OnInit, AfterViewInit {
     this.chartLineTrend.labels = this.skills[0].trendDatas.map(trend => trend.date);
     this.chartLineTrend.datas = this.skills.map(skill => {
       const chart = new SkillMultipleDataChart();
-      chart.data = skill.trendDatas.map(trend => trend.value[0]);
+      chart.data = skill.trendDatas.map(trend => trend.value);
       chart.borderColor = skill.color;
       chart.pointBackgroundColor =  skill.color;
       chart.fill = false;

@@ -23,7 +23,7 @@ export class Skill implements ISkill {
   private _color: String;
 
   calculTrendAverage(): number {
-    const sum = this._trendDatas.map(trend => trend.value[0]).reduce((t1, t2) => t1 + t2);
+    const sum = this._trendDatas.map(trend => trend.value).reduce((t1, t2) => t1 + t2);
     return Math.round(sum / this._trendDatas.length);
   }
 

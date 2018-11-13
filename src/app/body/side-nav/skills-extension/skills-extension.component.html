@@ -6,14 +6,16 @@
     </label>
     <label>{{selectSwitchLabel}}</label>
   </div>
-  <div *ngFor="let skillExtension of skillsExtension">
-    <app-skill-extension [skillCheck]="skillExtension.checked"
-                         [skillColor]="skillExtension.skill.color"
-                         [skillName]="skillExtension.skill.name"
-                         (skillSelected)="onSkillSelected($event, skillExtension)" >
-    </app-skill-extension>
+  <div *ngIf="skillsExtension">
+    <div  *ngFor="let skillExtension of sortSkills()">
+      <app-skill-extension [skillCheck]="skillExtension.checked"
+                           [skillColor]="skillExtension.skill.color"
+                           [skillName]="skillExtension.skill.name"
+                           (skillSelected)="onSkillSelected($event, skillExtension)" >
+      </app-skill-extension>
+    </div>
   </div>
   <div class="btn-extension">
-    <button (click)="loadSkills()" type="button" class="btn btn-primary btn-md">Load</button>
+    <button (click)="test()" type="button" class="btn btn-primary btn-md">Load</button>
   </div>
 </div>

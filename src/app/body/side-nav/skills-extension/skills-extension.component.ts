@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {SkillService} from '../../../services/skill.service';
 import {SkillExtension} from './skill-extension';
 import {ISkill} from '../../../shared/skill/skill';
@@ -9,18 +9,20 @@ import {ISkill} from '../../../shared/skill/skill';
   styleUrls: ['./skills-extension.component.css']
 })
 export class SkillsExtensionComponent implements OnInit {
-
   selectSwitchLabel: String;
+
   allSkillSelected: Boolean;
-  skills: ISkill[];
   skillsExtension: SkillExtension[];
   numberSkillsInit = 2;
+  constructor(private skillService: SkillService, private cdRef: ChangeDetectorRef) { }
 
-  constructor(private skillService: SkillService) { }
+  test() {
+    this.skillService.getSkills();
+  }
 
   async ngOnInit() {
-    this.skills = await this.skillService.load();
-    this.skillsExtension =  this.skills.map((skill, index) => new SkillExtension(skill, index < this.numberSkillsInit));
+    const skills = await this.skillService.getSkills();
+    this.skillsExtension = skills.map((skill, index) => new SkillExtension(skill, index < this.numberSkillsInit));
     this.switchLabel();
     this.loadSkills();
   }
@@ -43,11 +45,12 @@ export class SkillsExtensionComponent implements OnInit {
 
   loadSkills() {
     const skillsNameSelected = this.skillsExtension.filter(skillExt => skillExt.checked).map(skillExt => skillExt.skill.name);
-    this.skillService.filterSkills(this.skills, skillsNameSelected);
+    this.skillService.filterSkills(skillsNameSelected);
   }
 
   onSkillSelected(check: Boolean, skillExtension: SkillExtension){
     skillExtension.checked = check;
+    console.log(skillExtension);
     this.loadSkills();
   }
 }

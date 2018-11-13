@@ -3,6 +3,12 @@ import {SkillInterestEnum} from '../shared/skill/skill-interest.enum';
 import {SkillLevelEnum} from '../shared/skill/skill-level.enum';
 import {SkillTrend} from '../shared/skill/skill-trend';
 
+export const monthNamesTrig = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+];
+
+export const SKILLS_NAME = ['Scala', 'Java', 'Python', 'Kotlin', 'Angular', 'AngularJs'];
+
 export function getRandomColor(): String {
   return '#' +  ('000000' + Math.floor(0x1000000 * Math.random()).toString(16)).slice(-6);
 }
@@ -27,18 +33,18 @@ export function mockDates(): Date[] {
 }
 
 export function getRandomTrendDatas(): SkillTrend[] {
-  return [new SkillTrend([randomValue()], mockDates()[0]),
-    new SkillTrend([randomValue()], mockDates()[1]),
-    new SkillTrend([randomValue()], mockDates()[2]),
-    new SkillTrend([randomValue()], mockDates()[3]),
-    new SkillTrend([randomValue()], mockDates()[4]),
-    new SkillTrend([randomValue()], mockDates()[5]),
-    new SkillTrend([randomValue()], mockDates()[6]),
-    new SkillTrend([randomValue()], mockDates()[7]),
-    new SkillTrend([randomValue()], mockDates()[8]),
-    new SkillTrend([randomValue()], mockDates()[9]),
-    new SkillTrend([randomValue()], mockDates()[10]),
-    new SkillTrend([randomValue()], mockDates()[11])];
+  return [new SkillTrend(randomValue(), mockDates()[0]),
+    new SkillTrend(randomValue(), mockDates()[1]),
+    new SkillTrend(randomValue(), mockDates()[2]),
+    new SkillTrend(randomValue(), mockDates()[3]),
+    new SkillTrend(randomValue(), mockDates()[4]),
+    new SkillTrend(randomValue(), mockDates()[5]),
+    new SkillTrend(randomValue(), mockDates()[6]),
+    new SkillTrend(randomValue(), mockDates()[7]),
+    new SkillTrend(randomValue(), mockDates()[8]),
+    new SkillTrend(randomValue(), mockDates()[9]),
+    new SkillTrend(randomValue(), mockDates()[10]),
+    new SkillTrend(randomValue(), mockDates()[11])];
 }
 
 export const SKILLS: Skill[] = [new Skill('python',  SkillInterestEnum.High, SkillLevelEnum.Rookie, getRandomColor(), getRandomTrendDatas())

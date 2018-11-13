@@ -22,7 +22,7 @@ export class SkillsOverviewComponent implements OnInit {
   }
 
   createSkills() {
-    this.skillService.getSkills()
+    this.skillService.getSkillsBis()
       .subscribe(skills =>
         this.skills = skills.map(skill => new SkillOverview(skill, this.buildChartTrend(skill))));
   }
